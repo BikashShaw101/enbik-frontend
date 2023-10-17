@@ -32,6 +32,35 @@ const CommentContainer = ({ className, logginedUserId }) => {
     setComments((curState) => {
       return [newComment, ...curState];
     });
+    setAffectedComment(null);
+  };
+
+  const updateCommentHandler = (value, commentId) => {
+    const updateComment = comments.map((comment) => {
+      if (comment._id === commentId) {
+        return { ...comment, desc: value };
+      }
+      return comment;
+    });
+    setComments(updateComment);
+    setAffectedComment(null);
+  };
+
+  const deleteCommentHandler = (commentId) => {
+    const updatedComment = comments.filter((comment) => {
+      return comment._id !== commentId;
+    });
+    setComments(updatedComment);
+  };
+
+  const getRepliesHandler = (commentId) => {
+    return comments
+      .filter((comment) => comment.parent === commentId)
+      .sort((a, b) => {
+        return (
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+      });
   };
 
   return (
@@ -48,6 +77,10 @@ const CommentContainer = ({ className, logginedUserId }) => {
             logginedUserId={logginedUserId}
             affectedComment={affectedComment}
             setAffectedComment={setAffectedComment}
+            addComment={addCommentHandler}
+            updateComment={updateCommentHandler}
+            deleteComment={deleteCommentHandler}
+            replies={getRepliesHandler(comment._id)}
           />
         ))}
       </div>
