@@ -23,7 +23,10 @@ const CommentForm = ({
         />
         <div className="flex gap-x-2 pt-2 items-center">
           {formCancelHandler && (
-            <button onClick={formCancelHandler} className="lg:px-6 lg:py-2.5 lg:text-base border border-red-500 text-red-500 font-semibold rounded-lg text-sm px-4 py-2 ">
+            <button
+              onClick={formCancelHandler}
+              className="lg:px-6 lg:py-2.5 lg:text-base border border-red-500 text-red-500 font-semibold rounded-lg text-sm px-4 py-2 "
+            >
               Cancel
             </button>
           )}
