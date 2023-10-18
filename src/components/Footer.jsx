@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  FaTwitter,
   FaYoutube,
   FaFacebookF,
   FaTelegramPlane,
 } from "react-icons/fa";
 // import { MdWebhook } from "react-icons/md";
-import { AiFillInstagram } from "react-icons/ai";
+import { RiTwitterXFill } from "react-icons/ri";
+import { GrInstagram } from "react-icons/gr";
 import images from "../constants/images";
 
 const Footer = () => {
@@ -97,7 +97,7 @@ const Footer = () => {
           <ul className="flex justify-center md:justify-start items-center mt-5 space-x-4 text-gray-300">
             <li>
               <a href="/">
-                <FaTwitter className="w-6 h-auto" />
+                <RiTwitterXFill className="w-6 h-auto" />
               </a>
             </li>
             <li>
@@ -107,7 +107,7 @@ const Footer = () => {
             </li>
             <li>
               <a href="/">
-                <AiFillInstagram className="w-6 h-auto" />
+                <GrInstagram className="w-6 h-auto" />
               </a>
             </li>
             <li>

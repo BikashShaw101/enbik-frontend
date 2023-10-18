@@ -5,6 +5,7 @@ import BreadCrumbs from "../../components/BreadCrumbs";
 import { Link } from "react-router-dom";
 import SuggestedPost from "./container/SuggestedPost";
 import CommentContainer from "../../components/comments/CommentContainer";
+import SocialShareBtn from "../../components/SocialShareBtn";
 
 const BreadCrumbsData = [
   { name: "Home", link: "/" },
@@ -82,12 +83,23 @@ const ArticleDetailPage = () => {
           </div>
           <CommentContainer className="mt-10" logginedUserId="a" />
         </article>
-        <SuggestedPost
-          header="Latest Content"
-          className="mt-8 lg:mt-10 lg:max-w-xs"
-          posts={postData}
-          tags={tagsData}
-        />
+        <div>
+          <SuggestedPost
+            header="Latest Content"
+            className="mt-8 lg:mt-10 lg:max-w-xs"
+            posts={postData}
+            tags={tagsData}
+          />
+          <div className="mt-7">
+            <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+              Share on:
+            </h2>
+            <SocialShareBtn
+              url={encodeURI("https://one8.com/")}
+              title={encodeURIComponent("One8 Website")}
+            />
+          </div>
+        </div>
       </section>
     </MainLayout>
   );

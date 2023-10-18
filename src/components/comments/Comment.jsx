@@ -35,7 +35,7 @@ const Comment = ({
         className="w-9 h-9 object-cover rounded-full"
       />
       <div className="flex flex-1 flex-col">
-        <h5 className="font-bold text-dark-hard text-xs">
+        <h5 className="font-bold text-dark-hard text-xs lg:text-sm">
           {comment.user.name}
         </h5>
         <span className="text-xs text-dark-light">
@@ -62,7 +62,7 @@ const Comment = ({
             initialText={comment.desc}
           />
         )}
-        <div className="flex items-center gap-x-4 mt-3 mb-3 font-roboto text-sm text-dark-light">
+        <div className="flex flex-wrap gap-y-2 items-center gap-x-4 mt-3 mb-3 font-roboto text-sm text-dark-light">
           {isUserLoggined && (
             <button
               className="flex items-center space-x-1"
