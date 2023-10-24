@@ -3,24 +3,23 @@ import { useForm } from "react-hook-form";
 import MainLayout from "../../components/MainLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
-import { signup } from "../../services/index/users";
+import { login } from "../../services/index/users";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { userActions } from "../../store/reducers/userReducers";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user);
-
   const { mutate } = useMutation({
-    mutationFn: ({ name, email, password }) => {
-      return signup({ name, email, password });
+    mutationFn: ({ email, password }) => {
+      return login({ email, password });
     },
     onSuccess: (data) => {
       dispatch(userActions.setUserInfo(data));
       localStorage.setItem("account", JSON.stringify(data));
-      toast.success("Thanks for registration");
+      toast.success("Login Successfully");
     },
     onError: (error) => {
       toast.error(error.message);
@@ -38,62 +37,27 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
     mode: "onChange",
   });
 
   const submitHandler = (data) => {
-    const { name, email, password } = data;
-    mutate({ name, email, password });
+    const { email, password } = data;
+    mutate({ email, password });
   };
-  const password = watch("password");
 
   return (
     <MainLayout>
       <section className="container mx-auto px-5 py-10">
         <div className="w-full max-w-sm mx-auto">
           <h1 className="font-roboto text-2xl font-bold text-center text-dark-hard mb-8">
-            Sign up
+            Login
           </h1>
           <form onSubmit={handleSubmit(submitHandler)}>
-            <div className="flex flex-col mb-6 w-full">
-              <label
-                htmlFor="name"
-                className="text-[#5a7184] font-semibold block"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                {...register("name", {
-                  minLength: {
-                    value: 2,
-                    message: "Name must be atleast 2 character",
-                  },
-                  required: {
-                    value: true,
-                    message: "Name is required",
-                  },
-                })}
-                placeholder="Enter name"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.name ? "border-red-500" : "border-[#c3cad9]"
-                }`}
-              />
-              {errors.name?.message && (
-                <div className="text-red-500 text-sm mt-1">
-                  {errors.name?.message}
-                </div>
-              )}
-            </div>
             <div className="flex flex-col mb-6 w-full">
               <label
                 htmlFor="name"
@@ -156,49 +120,24 @@ const RegisterPage = () => {
                 </div>
               )}
             </div>
-            <div className="flex flex-col mb-6 w-full">
-              <label
-                htmlFor="confirmPassword"
-                className="text-[#5a7184] font-semibold block"
-              >
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                {...register("confirmPassword", {
-                  required: {
-                    value: true,
-                    message: "Confirm password is required",
-                  },
-                  validate: (value) => {
-                    if (value !== password) {
-                      return "Password do not matched";
-                    }
-                  },
-                })}
-                placeholder="Enter confirm password"
-                className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block outline-none border ${
-                  errors.confirmPassword ? "border-red-500" : "border-[#c3cad9]"
-                }`}
-              />
-              {errors.confirmPassword?.message && (
-                <div className="text-red-500 text-sm mt-1">
-                  {errors.confirmPassword?.message}
-                </div>
-              )}
-            </div>
+
+            <Link
+              to={"/forget-password"}
+              className="text-sm font-semibold text-primary"
+            >
+              Forgot password?
+            </Link>
             <button
               type="submit"
               // disabled={}
-              className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg mb-6 disabled:opacity-50 disabled:cursor-not-allowed "
+              className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg my-6 disabled:opacity-50 disabled:cursor-not-allowed "
             >
-              Register
+              Sign In
             </button>
             <p className="text-sm font-semibold text-[#5a7184]">
-              You have an account?{" "}
-              <Link to={"/login"} className="text-primary">
-                Login now
+              Do not have an account?
+              <Link to={"/register"} className="text-primary ml-1">
+                Register now
               </Link>
             </p>
           </form>
@@ -208,4 +147,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
