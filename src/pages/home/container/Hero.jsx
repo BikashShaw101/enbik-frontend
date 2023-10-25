@@ -6,10 +6,10 @@ const Hero = () => {
   return (
     <section className="container mx-auto flex flex-col lg:flex-row px-5 py-5 ">
       <div className="mt-10 lg:w-1/2">
-        <h1 className="font-roboto text-3xl text-center font-bold text-dark-soft md:text-5xl lg:text-4xl xl:text-5xl lg:text-left lg:max-w-[540px] ">
+        <h1 className="font-roboto text-3xl text-center font-bold text-[#ffb039] md:text-5xl lg:text-4xl xl:text-5xl lg:text-left lg:max-w-[540px] ">
           Read the most Interesting articles here
         </h1>
-        <p className="text-dark-light mt-4 text-center md:text-xl xl:text-xl lg:text-base lg:text-left">
+        <p className="text-[#3c250e] mt-4 text-center md:text-xl xl:text-xl lg:text-base lg:text-left">
           Releated to the ancient wisdom, perspective with modern thoughts and
           concept from different <em>Darshans</em>, <em>Scriptures</em> and many
           more
@@ -40,7 +40,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hidden lg:block lg:1/2 ">
-        <img src={images.Scripture} alt="" className="w-[750px] pl-[45px] transition-all duration-200 hover:scale-105 " />
+        <img src={images.guru} alt="" className="w-[750px] pl-[45px] transition-all duration-200 hover:scale-105 " />
       </div>
     </section>
   );

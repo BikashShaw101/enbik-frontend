@@ -43,7 +43,7 @@ const ProfilePicture = ({ avatar }) => {
   };
 
   const handleDeleteImage = async () => {
-    if (window.confirm("Do you delete your profile picture")) {
+    if (window.confirm("Do you want to delete your profile picture")) {
       try {
         const formData = new FormData();
         formData.append("profilePicture", undefined);
