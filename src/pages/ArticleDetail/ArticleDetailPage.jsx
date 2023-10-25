@@ -1,17 +1,24 @@
 import React from "react";
-import { images } from "../../constants";
+import ArticleDetailSkeleton from "./components/ArtcleDetailSkeleton";
+import ErrorMessage from "../../components/ErrorMessage";
+import { images, stables } from "../../constants";
 import MainLayout from "../../components/MainLayout";
+import { generateHTML } from "@tiptap/html";
+import Bold from "@tiptap/extension-bold";
+import Document from "@tiptap/extension-document";
+import Paragraph from "@tiptap/extension-paragraph";
+import Text from "@tiptap/extension-text";
+import Italic from "@tiptap/extension-italic";
+import parse from "html-react-parser";
 import BreadCrumbs from "../../components/BreadCrumbs";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SuggestedPost from "./container/SuggestedPost";
 import CommentContainer from "../../components/comments/CommentContainer";
 import SocialShareBtn from "../../components/SocialShareBtn";
-
-const BreadCrumbsData = [
-  { name: "Home", link: "/" },
-  { name: "Blog", link: "/blog" },
-  { name: "Article title", link: "/blog/1" },
-];
+import { useQuery } from "@tanstack/react-query";
+import { getSinglePost } from "../../services/index/posts";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const postData = [
   {
@@ -50,57 +57,87 @@ const tagsData = [
 ];
 
 const ArticleDetailPage = () => {
+  const { slug } = useParams();
+  const userState = useSelector((state) => state.user);
+  const [breadCrumbsData, setBreadCrumbsData] = useState([]);
+  const [body, setBody] = useState(null);
+
+  const { data, isLoading, isError } = useQuery({
+    queryFn: () => getSinglePost({ slug }),
+    queryKey: ["blog", slug],
+    onSuccess: (data) => {
+      setBreadCrumbsData([
+        { name: "Home", link: "/" },
+        { name: "Blog", link: "/blog" },
+        { name: "Article title", link: `/blog/${data.slug}` },
+      ]);
+      setBody(
+        parse(
+          generateHTML(data?.body, [Bold, Italic, Text, Paragraph, Document])
+        )
+      );
+    },
+  });
+
   return (
     <MainLayout>
-      <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
-        <article className="flex-1">
-          <BreadCrumbs data={BreadCrumbsData} />
-          <img
-            src={images.postImage}
-            alt="articlePoster"
-            className="rounded-xl w-full"
-          />
-          <Link
-            to="/blog?category=selectedCategory"
-            className="text-primary text-sm md:text-base font-roboto font-medium inline-block mt-4 uppercase"
-          >
-            Education
-          </Link>
-          <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
-            Help children get better education
-          </h1>
-          <div className="mt-4 text-dark-soft">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              doloribus expedita quam quo, itaque mollitia recusandae?
-              Consectetur saepe quis soluta ex nam quibusdam aliquam velit animi
-              architecto fugiat! Amet iusto fuga voluptatem rerum cupiditate,
-              hic, dicta iste perferendis possimus corporis a consequatur quidem
-              reiciendis nulla beatae provident blanditiis sunt vel officiis?
-              Doloremque ipsam sit officiis dignissimos vitae et, maiores
-              perferendis.
-            </p>
-          </div>
-          <CommentContainer className="mt-10" logginedUserId="a" />
-        </article>
-        <div>
-          <SuggestedPost
-            header="Latest Content"
-            className="mt-8 lg:mt-10 lg:max-w-xs"
-            posts={postData}
-            tags={tagsData}
-          />
-          <div className="mt-7">
-            <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
-              Share on:
-            </h2>
-            <SocialShareBtn
-              url={encodeURI("https://one8.com/")}
-              title={encodeURIComponent("One8 Website")}
+      {isLoading ? (
+        <ArticleDetailSkeleton />
+      ) : isError ? (
+        <ErrorMessage message="Couldn't fetch the post details" />
+      ) : (
+        <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
+          <article className="flex-1">
+            <BreadCrumbs data={breadCrumbsData} />
+            <img
+              src={
+                data?.photo
+                  ? stables.UPLOAD_FOLDER_BASE_URL + data?.photo
+                  : images.image
+              }
+              alt={data?.title}
+              className="rounded-xl w-full"
             />
+            <div className="flex gap-2 mt-4">
+              {data?.categories.map((category) => (
+                <Link
+                  to="/blog?category=selectedCategory"
+                  className="text-primary text-sm md:text-base font-roboto font-medium inline-block mt-4 uppercase"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+            <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
+              {data?.title}
+            </h1>
+            <div className="mt-4 prose prose-sm sm:prose-base">{body}</div>
+            <CommentContainer
+              comments={data?.comments}
+              className="mt-10"
+              logginedUserId={userState?.userInfo?._id}
+              postSlug={slug}
+            />
+          </article>
+          <div>
+            <SuggestedPost
+              header="Latest Content"
+              className="mt-8 lg:mt-10 lg:max-w-xs"
+              posts={postData}
+              tags={tagsData}
+            />
+            <div className="mt-7">
+              <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+                Share on:
+              </h2>
+              <SocialShareBtn
+                url={encodeURI("https://one8.com/")}
+                title={encodeURIComponent("One8 Website")}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </MainLayout>
   );
 };

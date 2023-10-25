@@ -18,7 +18,6 @@ const ProfilePage = () => {
   const {
     data: profileData,
     isLoading: profileIsLoading,
-    error: profileError,
   } = useQuery({
     queryFn: () => {
       return getUserProfile({ token: userState.userInfo.token });

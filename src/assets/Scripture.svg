@@ -76,7 +76,7 @@
       }
 
       .cls-28, .cls-29, .cls-17, .cls-30, .cls-31, .cls-22 {
-        fill-rule: evenodd;
+        fillRrule: evenodd;
       }
 
       .cls-28, .cls-32 {
