@@ -16,45 +16,9 @@ import SuggestedPost from "./container/SuggestedPost";
 import CommentContainer from "../../components/comments/CommentContainer";
 import SocialShareBtn from "../../components/SocialShareBtn";
 import { useQuery } from "@tanstack/react-query";
-import { getSinglePost } from "../../services/index/posts";
+import { getAllPosts, getSinglePost } from "../../services/index/posts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
-const postData = [
-  {
-    _id: 1,
-    image: images.postImage,
-    title: "Help children get better education",
-    createdAt: "2023-01-19T08:24:14-05:00",
-  },
-  {
-    _id: 2,
-    image: images.postImage,
-    title: "Help children get better education",
-    createdAt: "2023-01-19T08:24:14-05:00",
-  },
-  {
-    _id: 3,
-    image: images.postImage,
-    title: "Help children get better education",
-    createdAt: "2023-01-19T08:24:14-05:00",
-  },
-  {
-    _id: 4,
-    image: images.postImage,
-    title: "Help children get better education",
-    createdAt: "2023-01-19T08:24:14-05:00",
-  },
-];
-
-const tagsData = [
-  "Medical",
-  "Lifestyle",
-  "Shastra",
-  "Darshanas",
-  "vedas",
-  "Gita",
-];
 
 const ArticleDetailPage = () => {
   const { slug } = useParams();
@@ -77,6 +41,11 @@ const ArticleDetailPage = () => {
         )
       );
     },
+  });
+
+  const { data: postData } = useQuery({
+    queryFn: () => getAllPosts(),
+    queryKey: ["posts"],
   });
 
   return (
@@ -124,15 +93,15 @@ const ArticleDetailPage = () => {
               header="Latest Content"
               className="mt-8 lg:mt-10 lg:max-w-xs"
               posts={postData}
-              tags={tagsData}
+              tags={data?.tags}
             />
             <div className="mt-7">
               <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
                 Share on:
               </h2>
               <SocialShareBtn
-                url={encodeURI("https://one8.com/")}
-                title={encodeURIComponent("One8 Website")}
+                url={encodeURI(window.location.href)}
+                title={encodeURIComponent(data?.title)}
               />
             </div>
           </div>

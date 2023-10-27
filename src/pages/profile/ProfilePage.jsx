@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserProfile, updateProfile } from "../../services/index/users";
 import ProfilePicture from "../../components/ProfilePicture";
 import { userActions } from "../../store/reducers/userReducers";
+import { useMemo } from "react";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,7 @@ const ProfilePage = () => {
   const queryClient = useQueryClient();
   const userState = useSelector((state) => state.user);
 
-  const {
-    data: profileData,
-    isLoading: profileIsLoading,
-  } = useQuery({
+  const { data: profileData, isLoading: profileIsLoading } = useQuery({
     queryFn: () => {
       return getUserProfile({ token: userState.userInfo.token });
     },
@@ -60,10 +58,12 @@ const ProfilePage = () => {
       email: "",
       password: "",
     },
-    values: {
-      name: profileIsLoading ? "" : profileData.name,
-      email: profileIsLoading ? "" : profileData.email,
-    },
+    values: useMemo(() => {
+      return {
+        name: profileIsLoading ? "" : profileData.name,
+        email: profileIsLoading ? "" : profileData.email,
+      };
+    }, [profileData?.email, profileData?.name, profileIsLoading]),
     mode: "onChange",
   });
 

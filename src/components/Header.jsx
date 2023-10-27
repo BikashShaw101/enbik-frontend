@@ -94,7 +94,7 @@ const Header = () => {
     <section className="sticky top-0 left-0 right-0 z-50 bg-white">
       <header className="container m-auto px-5 flex justify-between py-4 items-center">
         <Link to={"/"}>
-          <img className="w-24 lg:w-full" src={images.logo} alt="" />
+          <img className="w-24 lg:w-full" src={images.logo} alt="logo" />
         </Link>
         <div className="z-50 lg:hidden">
           {navIsVisible ? (
@@ -136,6 +136,15 @@ const Header = () => {
                     } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 w-max lg:transform lg:translate-y-full lg:group-hover:block`}
                   >
                     <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
+                      {userState?.userInfo?.admin && (
+                        <button
+                          onClick={() => navigate("/admin")}
+                          type="button"
+                          className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
+                        >
+                          Admin Dashboard
+                        </button>
+                      )}
                       <button
                         onClick={() => navigate("/profile")}
                         type="button"
