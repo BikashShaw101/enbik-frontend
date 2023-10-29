@@ -124,7 +124,7 @@ const Header = () => {
               <div className="relative group">
                 <div className="flex flex-col items-center">
                   <button
-                    className="flex gap-x-1 items-center border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full font-semibold text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
+                    className="flex gap-x-1 items-center border-2 mt-5 lg:mt-0 border-orange-500 px-6 py-2 rounded-full font-semibold text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
                     onClick={() => setProfileDropdown(!profileDropdown)}
                   >
                     <span>Account</span>
