@@ -2,13 +2,17 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { HiOutlineCamera } from "react-icons/hi";
 import ArticleDetailSkeleton from "../../../ArticleDetail/components/ArtcleDetailSkeleton";
 import React, { useEffect, useState } from "react";
-import { getSinglePost, updatePostDetail } from "../../../../services/index/posts";
+import {
+  getSinglePost,
+  updatePostDetail,
+} from "../../../../services/index/posts";
 import { Link, useParams } from "react-router-dom";
 import ErrorMessage from "../../../../components/ErrorMessage";
-import parseJsonToHtml from "../../../../utils/parseJsonToHtml";
+// import parseJsonToHtml from "../../../../utils/parseJsonToHtml";
 import { stables } from "../../../../constants";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import Editor from "../../../../components/editor/Editor";
 
 const EditPost = () => {
   const { slug } = useParams();
@@ -42,7 +46,6 @@ const EditPost = () => {
   useEffect(() => {
     if (!isLoading && !isError) {
       setInitialPhoto(data?.photo);
-      setBody(parseJsonToHtml(data?.body));
     }
   }, [data, isLoading, isError]);
 
@@ -68,7 +71,7 @@ const EditPost = () => {
       );
       updatedData.append("postPicture", picture);
     }
-    updatedData.append("document", JSON.stringify({}));
+    updatedData.append("document", JSON.stringify({ body }));
     mutateUpdatedPostDetail({
       updatedData,
       slug,
@@ -119,7 +122,7 @@ const EditPost = () => {
             />
             <button
               type="button"
-              className="w-fit bg-red-500 text-white font-semibold rounded-lg px-3 py-1 mt-3 hover:bg-red-700 transition-colors duration-200"
+              className="w-fit bg-red-500 text-white font-semibold rounded-lg px-3 py-1 mt-3 hover:bg-red-700 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
               onClick={handleDeleteImage}
             >
               Delete image
@@ -137,11 +140,21 @@ const EditPost = () => {
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
               {data?.title}
             </h1>
-            <div className="mt-4 prose prose-sm sm:prose-base">{body}</div>
+            <div className="w-full">
+              {!isLoading && !isError && (
+                <Editor
+                  content={data?.body}
+                  editable={true}
+                  onDataChange={(data) => {
+                    setBody(data);
+                  }}
+                />
+              )}
+            </div>
             <button
               type="button"
               disabled={isLoadingUpdatedPostDetail}
-              className="w-full bg-green-500 text-white rounded-lg font-semibold px-4 py-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full mt-7 bg-green-500 text-white rounded-lg font-semibold px-4 py-2 disabled:opacity-70 disabled:cursor-not-allowed"
               onClick={handleUpdatePost}
             >
               Update Post

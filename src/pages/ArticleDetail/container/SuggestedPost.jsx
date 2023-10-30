@@ -18,8 +18,8 @@ const SuggestedPost = ({ className, header, posts = [], tags }) => {
           >
             <img
               src={
-                item?.image
-                  ? stables.UPLOAD_FOLDER_BASE_URL + item?.image
+                item?.photo
+                  ? stables.UPLOAD_FOLDER_BASE_URL + item?.photo
                   : images.image
               }
               alt={item.title}

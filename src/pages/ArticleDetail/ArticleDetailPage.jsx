@@ -13,13 +13,14 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllPosts, getSinglePost } from "../../services/index/posts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import parseJsonToHtml from "../../utils/parseJsonToHtml";
+// import parseJsonToHtml from "../../utils/parseJsonToHtml";
+import Editor from "../../components/editor/Editor";
 
 const ArticleDetailPage = () => {
   const { slug } = useParams();
   const userState = useSelector((state) => state.user);
   const [breadCrumbsData, setBreadCrumbsData] = useState([]);
-  const [body, setBody] = useState(null);
+//   const [body, setBody] = useState(null);
 
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getSinglePost({ slug }),
@@ -30,7 +31,7 @@ const ArticleDetailPage = () => {
         { name: "Blog", link: "/blog" },
         { name: "Article title", link: `/blog/${data.slug}` },
       ]);
-      setBody(parseJsonToHtml(data?.body));
+    //   setBody(parseJsonToHtml(data?.body));
     },
   });
 
@@ -71,7 +72,11 @@ const ArticleDetailPage = () => {
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
               {data?.title}
             </h1>
-            <div className="mt-4 prose prose-sm sm:prose-base">{body}</div>
+            <div className="w-full">
+              {!isLoading && !isError && (
+                <Editor content={data?.body} editable={false} />
+              )}
+            </div>
             <CommentContainer
               comments={data?.comments}
               className="mt-10"
