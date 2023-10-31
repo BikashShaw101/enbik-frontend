@@ -73,7 +73,7 @@ const ManagePost = () => {
       <div className="w-full px-4 mx-auto ">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
-            <h2 className="text-2xl leading-tight">Users</h2>
+            <h2 className="text-2xl leading-tight">Posts</h2>
             <div className="text-end">
               <form
                 onSubmit={submitSearchKeywordHandler}

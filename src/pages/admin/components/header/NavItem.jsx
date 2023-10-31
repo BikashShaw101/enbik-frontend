@@ -14,7 +14,7 @@ const NavItem = ({
       to={link}
       className={`${
         name === activeNavName
-          ? "font-bold text-primary"
+          ? "font-bold text-dark-hard"
           : "font-semibold text-[#a5a5a5]"
       } flex gap-x-2 py-2 items-center text-lg`}
       onClick={() => setActiveNavName(name)}

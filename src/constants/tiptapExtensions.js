@@ -3,6 +3,10 @@ import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import StarterKit from "@tiptap/starter-kit";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import TextAlign from "@tiptap/extension-text-align";
+import Dropcursor from "@tiptap/extension-dropcursor"; // image extensions tiptap
+import Image from "@tiptap/extension-image";
+import Youtube from "@tiptap/extension-youtube"; // YouTube Video
 import { lowlight } from "lowlight";
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
@@ -29,5 +33,16 @@ export const extensions = [
   }),
   CodeBlockLowlight.configure({
     lowlight,
+  }),
+  Dropcursor,
+  Image,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
+  Youtube.configure({
+    width: 720,
+    height: 400,
+    modestBranding: "false",
+    progressBarColor: "white",
   }),
 ];

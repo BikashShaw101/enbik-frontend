@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import {
   AiOutlineBold,
   AiOutlineClose,
@@ -8,14 +9,38 @@ import {
   AiOutlineStrikethrough,
   AiOutlineUndo,
   AiOutlineUnorderedList,
+  AiOutlineAlignLeft,
+  AiOutlineAlignCenter,
+  AiOutlineAlignRight,
 } from "react-icons/ai";
-import { BiParagraph } from "react-icons/bi";
+import { BiParagraph, BiAlignJustify, BiLogoYoutube } from "react-icons/bi";
 import { FiCode } from "react-icons/fi";
 import { MdOutlineLayersClear } from "react-icons/md";
-import { PiCodeBlock, PiQuotes } from "react-icons/pi";
+import { PiCodeBlock, PiQuotes, PiImageSquareBold } from "react-icons/pi";
 import { TbSpacingVertical } from "react-icons/tb";
 
 const MenuBar = ({ editor }) => {
+  const addYoutubeVideo = () => {
+    const url = prompt("Enter YouTube URL");
+
+    if (url) {
+      editor.commands.setYoutubeVideo({
+        src: url,
+        width: 720,
+        height: 400,
+      });
+    }
+  };
+
+  // image handler function
+  const addImage = useCallback(() => {
+    const url = window.prompt("URL");
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  }, [editor]);
+
   if (!editor) {
     return null;
   }
@@ -116,7 +141,9 @@ const MenuBar = ({ editor }) => {
         onClick={() => editor.chain().focus().clearNodes().run()}
         className={`editor-btn`}
       >
-        <span title="Reset"><AiOutlineClose /></span>
+        <span title="Reset">
+          <AiOutlineClose />
+        </span>
       </button>
       <button
         onClick={() => editor.chain().focus().setParagraph().run()}
@@ -126,6 +153,59 @@ const MenuBar = ({ editor }) => {
       >
         <BiParagraph />
       </button>
+
+      <button title="Img URL" onClick={addImage} className="editor-btn">
+        <PiImageSquareBold />
+      </button>
+
+      {/* Alignment start */}
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("left").run()}
+        className={`editor-btn ${
+          editor.isActive({ textAlign: "left" }) ? "is-active" : ""
+        }`}
+      >
+        <AiOutlineAlignLeft />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("center").run()}
+        className={`editor-btn ${
+          editor.isActive({ textAlign: "center" }) ? "is-active" : ""
+        }`}
+      >
+        <AiOutlineAlignCenter />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("right").run()}
+        className={`editor-btn ${
+          editor.isActive({ textAlign: "right" }) ? "is-active" : ""
+        }`}
+      >
+        <AiOutlineAlignRight />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("justify").run()}
+        className={`editor-btn ${
+          editor.isActive({ textAlign: "justify" }) ? "is-active" : ""
+        }`}
+      >
+        <BiAlignJustify />
+      </button>
+
+      {/* Alignment end */}
+
+      {/* Youtube Link start */}
+
+      <button
+        title="YouTube URL"
+        id="add"
+        className="editor-btn"
+        onClick={addYoutubeVideo}
+      >
+        <BiLogoYoutube />
+      </button>
+
+      {/* Youtube Link end */}
 
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -176,14 +256,18 @@ const MenuBar = ({ editor }) => {
         disabled={!editor.can().chain().focus().undo().run()}
         className={`editor-btn`}
       >
-        <span title="Undo"><AiOutlineUndo /></span>
+        <span title="Undo">
+          <AiOutlineUndo />
+        </span>
       </button>
       <button
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
         className={`editor-btn`}
       >
-        <span title="Redo"><AiOutlineRedo /></span>
+        <span title="Redo">
+          <AiOutlineRedo />
+        </span>
       </button>
     </div>
   );

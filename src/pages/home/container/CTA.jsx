@@ -31,7 +31,7 @@ const CTA = () => {
                 placeholder="Your Email"
                 className="w-full px-4 py-3 rounded-lg placeholder:text-dark-light outline-none border-0 font-semibold"
               />
-              <button className="px-4 py-3 rounded-lg w-full bg-primary text-white font-bold md:w-fit md:whitespace-nowrap">
+              <button className="px-4 py-3 rounded-lg w-full bg-orange-600 text-white font-bold md:w-fit md:whitespace-nowrap">
                 Get Started
               </button>
             </div>

@@ -19,7 +19,7 @@ const NavItemCollapse = ({
   }, [setActiveNavName, name]);
 
   return (
-    <div className="collapse collapse-arrow  min-h-0 rounded-none py-2">
+    <div className="d-collapse d-collapse-arrow  min-h-0 rounded-none py-2">
       <input
         type="checkbox"
         className="py-0 min-h-0"
@@ -30,19 +30,27 @@ const NavItemCollapse = ({
         }}
       />
       <div
-        className={`collapse-title text-lg min-h-0 py-0 pl-0 flex items-center gap-x-2 ${
+        className={`d-collapse-title text-lg min-h-0 py-0 pl-0 flex items-center gap-x-2 ${
           name === activeNavName
-            ? "font-bold text-primary"
+            ? "font-bold text-dark-hard"
             : "font-semibold text-[#a5a5a5]"
         } `}
       >
         {icon}
         {title}
       </div>
-      <div className="collapse-content">
+      <div className="d-collapse-content">
         <div className="flex flex-col gap-y-2 mt-2 ">
           {content.map((item) => (
-            <Link to={item.link} key={item.title} className="font-semibold text-[#a5a5a5]">
+            <Link
+              to={item.link}
+              key={item.title}
+              className={`font-semibold text-[#a5a5a5] ${
+                name === activeNavName
+                  ? "font-bold text-dark-hard"
+                  : "font-semibold text-[#a5a5a5]"
+              }`}
+            >
               {item.title}
             </Link>
           ))}

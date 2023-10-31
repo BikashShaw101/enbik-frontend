@@ -11,7 +11,7 @@ const Editor = ({ onDataChange, content, editable }) => {
     editorProps: {
       attributes: {
         class:
-          "!prose !dark:prose-invert prose-sm sm:prose-base lg:prose-lg max-w-none mt-5 focus:outline-none prose-pre:bg-[#282c34] prose-pre:text-[#abb2bf]",
+          "!prose !dark:prose-invert prose-sm sm:prose-base lg:prose-lg mt-7 max-w-none focus:outline-none prose-pre:bg-[#282c34] prose-pre:text-[#abb2bf]  ",
       },
     },
     onUpdate: ({ editor }) => {
@@ -22,7 +22,7 @@ const Editor = ({ onDataChange, content, editable }) => {
   });
 
   return (
-    <div className="w-full relative">
+    <div className="w-full h-auto relative ">
       {editable && <MenuBar editor={editor} />}
       <EditorContent editor={editor} />
     </div>

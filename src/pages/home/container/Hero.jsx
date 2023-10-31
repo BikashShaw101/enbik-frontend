@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
           <button
             type="button"
-            className="w-full bg-primary text-white font-semibold rounded-lg px-5 py-3 md:absolute md:right-2 md:top-1/2 md:-translate-y-1/2 md:w-fit md:py-2"
+            className="w-full bg-orange-500 text-white font-semibold rounded-lg px-5 py-3 md:absolute md:right-2 md:top-1/2 md:-translate-y-1/2 md:w-fit md:py-2"
           >
             Search
           </button>
@@ -35,14 +35,14 @@ const Hero = () => {
             Popular Tags:
           </span>
           <ul className="flex flex-wrap gap-x-2.5 gap-y-2.5 mt-3 lg:text-sm xl:text-base ">
-            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-primary font-semibold">
-              User Experience
+            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-orange-600 font-semibold">
+              Dharshan Shastra
             </li>
-            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-primary font-semibold">
-              Design
+            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-orange-600 font-semibold">
+              Vedanta
             </li>
-            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-primary font-semibold">
-              User Interface
+            <li className="rounded-lg bg-primary bg-opacity-10 px-3 py-1.5 text-orange-600 font-semibold">
+              Upanishads
             </li>
           </ul>
         </div>

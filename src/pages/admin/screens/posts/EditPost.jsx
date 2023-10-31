@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { HiOutlineCamera } from "react-icons/hi";
-import ArticleDetailSkeleton from "../../../ArticleDetail/components/ArtcleDetailSkeleton";
+import EditPostSkeleton from "./EditPostSkeleton";
 import React, { useEffect, useState } from "react";
 import {
   getSinglePost,
@@ -89,7 +89,7 @@ const EditPost = () => {
   return (
     <div>
       {isLoading ? (
-        <ArticleDetailSkeleton />
+        <EditPostSkeleton />
       ) : isError ? (
         <ErrorMessage message="Couldn't fetch the post details" />
       ) : (
@@ -103,11 +103,13 @@ const EditPost = () => {
                   className="rounded-xl w-full"
                 />
               ) : initialPhoto ? (
-                <img
-                  src={stables.UPLOAD_FOLDER_BASE_URL + data?.photo}
-                  alt={data?.title}
-                  className="rounded-xl w-full"
-                />
+                <div className="max-h-[400px] overflow-hidden flex items-center justify-center rounded-xl ">
+                  <img
+                    src={stables.UPLOAD_FOLDER_BASE_URL + data?.photo}
+                    alt={data?.title}
+                    className="rounded-xl w-full "
+                  />
+                </div>
               ) : (
                 <div className="flex items-center justify-center min-h-[200px] w-full bg-green-100/50 rounded-xl">
                   <HiOutlineCamera className="w-7 h-auto text-center  text-green-500" />
@@ -140,7 +142,7 @@ const EditPost = () => {
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
               {data?.title}
             </h1>
-            <div className="w-full">
+            <div className="w-full h-auto mt-6 overflow-x-auto ">
               {!isLoading && !isError && (
                 <Editor
                   content={data?.body}
