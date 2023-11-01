@@ -22,7 +22,7 @@ const memberData = [
   {
     name: "Saptarshi Mandal",
     stats: "Assitance Developer",
-    desc: "Saptarshi Mandal,hobbies : Gaming, Gardening",
+    desc: "Saptarshi Mandal, student of FIEM, persuing BCA, and self learner hobbies : Gaming, Gardening",
 
     img: images.saptarshi,
     links: {
@@ -63,7 +63,7 @@ const memberData = [
   {
     name: "Bipul prasad",
     stats: "Entrepreneur and Management",
-    desc: "I'm Bipul prasad, self learner, problem solver languages: Machine Learning with python , hobbies: Traveling",
+    desc: "I'm Bipul prasad, self learner, problem solver, and  Entrepreneur , hobbies: Traveling",
 
     img: images.bipul,
     links: {
@@ -111,7 +111,7 @@ const About = () => {
           </p>
         </div>
         <div className="p-8 bg-white rounded-xl shadow dark:bg-gray-800 w-full">
-          <div className="flex flex-col flex-wrap items-center md:flex-row justify-evenly">
+          <div className="flex flex-col flex-wrap items-center justify-center md:flex-row md:justify-evenly">
             {memberData.map((member, index) => (
               <AboutCard
                 key={index}
