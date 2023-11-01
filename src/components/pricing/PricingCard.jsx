@@ -14,7 +14,7 @@ const PricingCard = ({ company, price, desc, freeItems, paidItems }) => {
       </p>
       <p className="text-3xl font-bold text-gray-900 dark:text-white">
         ₹{price}
-        <span className="text-sm text-gray-300">/ month</span>
+        <span className="text-sm text-gray-300">/ Year</span>
       </p>
       <p className="mt-4 text-xs text-gray-600 dark:text-gray-100">{desc}</p>
       <ul className="w-full mt-6 mb-6 text-sm text-gray-600 dark:text-gray-100">

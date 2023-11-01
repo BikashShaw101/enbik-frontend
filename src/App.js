@@ -14,8 +14,8 @@ import ManagePost from "./pages/admin/screens/posts/ManagePost";
 import EditPost from "./pages/admin/screens/posts/EditPost";
 import Pricing from "./components/pricing/Pricing";
 import Faq from "./components/faq/Faq.jsx";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (

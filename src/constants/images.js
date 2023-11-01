@@ -7,6 +7,12 @@ import profile1 from "../assets/post/profile1.png";
 import CtaImage from "../assets/CtaImage.jpg";
 import base from "../assets/Base.svg";
 import user from "../assets/user.png";
+import saptarshi from "../assets/member/saptarshi.jpg";
+import bikash from "../assets/member/bikash.jpg";
+import rahul from "../assets/member/rahul.jpeg";
+import bhawesh from "../assets/member/bhawesh.jpeg";
+import bipul from "../assets/member/bipul.jpeg";
+import abhinandan from "../assets/member/abhinandan.jpeg";
 
 const images = {
   logo,
@@ -18,6 +24,12 @@ const images = {
   profile1,
   CtaImage,
   base,
+  saptarshi,
+  rahul,
+  bhawesh,
+  bipul,
+  bikash,
+  abhinandan,
 };
 
 export default images;

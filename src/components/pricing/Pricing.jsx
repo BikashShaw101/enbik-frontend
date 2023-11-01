@@ -21,9 +21,10 @@ const Pricing = () => {
   return (
     <>
       <Header />
-      <div className="px-4 py-6 h-full w-full flex flex-col bg-slate-100">
-        <div className="text-center mb-10 ">
-          <h1 className="text-3xl font-bold text-slate-800">Pricing</h1>
+      <div className="px-4 py-8 mb-8 h-full max-w-screen-xl mx-auto flex flex-col ">
+        <div className="mb-10 ">
+          <h1 className="text-4xl font-extrabold text-slate-800">Pricing</h1>
+          <hr />
         </div>
         <div className="flex flex-col md:flex-row md:gap-x-8 md:flex-wrap lg:flex-row items-center justify-center lg:gap-x-10 my-auto gap-y-10 lg:gap-y-0">
           <PricingCard
@@ -35,7 +36,7 @@ const Pricing = () => {
           />
           <PricingCard
             company={"Advance"}
-            price={299}
+            price={399}
             desc={"Advance Functionality Plan"}
             freeItems={AdvanceFree}
             paidItems={AdvancePaid}
