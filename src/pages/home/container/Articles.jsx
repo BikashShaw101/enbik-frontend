@@ -6,6 +6,7 @@ import { getAllPosts } from "../../../services/index/posts";
 import toast from "react-hot-toast";
 import ArticleCardSkeleton from "../../../components/ArticleCardSkeleton";
 import ErrorMessage from "../../../components/ErrorMessage";
+import { Link } from "react-router-dom";
 
 const Articles = ({hidden}) => {
   const { data, isLoading, isError } = useQuery({
@@ -46,10 +47,10 @@ const Articles = ({hidden}) => {
           />
         ))} */}
       </div>
-      <button className={`${hidden} mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg `}>
+      <Link to={"/articles"} className={`${hidden} mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg `}>
         <span>More Articles</span>
         <FaArrowRight className="w-3 h-3 " />
-      </button>
+      </Link>
     </section>
   );
 };
