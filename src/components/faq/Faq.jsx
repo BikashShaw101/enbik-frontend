@@ -68,8 +68,8 @@ const Faq = () => {
   return (
     <>
       <Header />
-      <div className="max-w-screen-xl p-8 mx-auto ">
-        <h2 className="mb-12 text-3xl font-extrabold leading-9 text-gray-900 border-b-2 border-gray-100">
+      <div className="max-w-screen-2xl py-8 px-5 mx-auto shadow-lg lg:my-7 my-0 rounded-lg">
+        <h2 className="mb-12 text-3xl lg:text-left text-center font-bold leading-9 text-gray-900 border-b-2 border-gray-100">
           FAQs
         </h2>
         <ul className="flex flex-wrap items-start gap-8">

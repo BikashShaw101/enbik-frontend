@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  FaYoutube,
-  FaFacebookF,
-  FaTelegramPlane,
-} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaYoutube, FaFacebookF, FaTelegramPlane } from "react-icons/fa";
 // import { MdWebhook } from "react-icons/md";
 import { RiTwitterXFill } from "react-icons/ri";
 import { GrInstagram } from "react-icons/gr";
@@ -85,11 +82,13 @@ const Footer = () => {
           </ul>
         </div>
         <div className="col-span-10 md:order-first md:col-span-4 mt-3 md:mt-0 lg:mt-2">
-          <img
-            src={images.logo}
-            alt="footerlogo"
-            className="brightness-0 invert mx-auto md:mx-0"
-          />
+          <Link to={"/"}>
+            <img
+              src={images.logo}
+              alt="footerlogo"
+              className="brightness-0 invert mx-auto md:mx-0"
+            />
+          </Link>
           <p className="text-sm text-dark-light text-center md:text-left md:text-base mt-4">
             Enbik Blogs Provides vast majority of Old Spictures and Religious
             text in Simple words

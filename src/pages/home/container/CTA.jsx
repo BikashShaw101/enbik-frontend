@@ -1,7 +1,11 @@
 import React from "react";
 import { images } from "../../../constants";
+import toast from "react-hot-toast";
 
 const CTA = () => {
+  const handleAcceptance = () => {
+    toast.error("Sorry..! Not Enabled in (Beta) Version");
+  };
   return (
     <>
       <svg
@@ -31,7 +35,10 @@ const CTA = () => {
                 placeholder="Your Email"
                 className="w-full px-4 py-3 rounded-lg placeholder:text-dark-light outline-none border-0 font-semibold"
               />
-              <button className="px-4 py-3 rounded-lg w-full bg-orange-600 text-white font-bold md:w-fit md:whitespace-nowrap">
+              <button
+                onClick={handleAcceptance}
+                className="px-4 py-3 rounded-lg w-full bg-orange-600 text-white font-bold md:w-fit md:whitespace-nowrap"
+              >
                 Get Started
               </button>
             </div>

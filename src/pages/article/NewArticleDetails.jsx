@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsCheckLg } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-import { images, stables } from "../constants";
+import { images, stables } from "../../constants";
 
-const ArticleCard = ({ post, className, imgClass="" }) => {
+const NewArticleDetails = ({ post, className }) => {
   return (
     <div
       className={`rounded-xl overflow-hidden shadow-[rgba(13,_38,_76,_0.19)_0px_9px_10px] ${className}`}
@@ -17,7 +17,7 @@ const ArticleCard = ({ post, className, imgClass="" }) => {
               : images.image
           }
           alt="post1"
-          className={`w-full object-cover object-center md:h-52 ${imgClass} `}
+          className="w-full object-cover object-center h-auto md:h-52 lg:h-48 xl:h-60 "
         />
       </Link>
       <div className="p-5">
@@ -76,4 +76,4 @@ const ArticleCard = ({ post, className, imgClass="" }) => {
   );
 };
 
-export default ArticleCard;
+export default NewArticleDetails;

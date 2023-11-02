@@ -16,6 +16,7 @@ import Pricing from "./components/pricing/Pricing";
 import Faq from "./components/faq/Faq.jsx";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import NewArticles from "./pages/article/NewArticles.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/articles" element={<NewArticles />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="comments" element={<Comments />} />

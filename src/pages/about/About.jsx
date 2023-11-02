@@ -13,8 +13,7 @@ const memberData = [
 
     img: images.bikash,
     links: {
-      gmail:
-        "bikashvicky101@gmail.com",
+      gmail: "bikashvicky101@gmail.com",
       linkedin: "https://www.linkedin.com/in/bikash-shaw/",
       github: "https://github.com/BikashShaw101",
     },
@@ -22,12 +21,12 @@ const memberData = [
   {
     name: "Saptarshi Mandal",
     stats: "Assitance Developer",
-    desc: "Saptarshi Mandal, student of FIEM, persuing BCA, and self learner hobbies : Gaming, Gardening",
+    desc:
+      "Saptarshi Mandal, student of FIEM, persuing BCA, and self learner hobbies : Gaming, Gardening",
 
     img: images.saptarshi,
     links: {
-      gmail:
-        "https://www.facebook.com/profile.php?id=100009458753340&mibextid=ZbWKwL",
+      gmail: "saptarshim0123@gmail.com",
       linkedin: "linkedInProfile",
       github: "Github(optional)",
     },
@@ -40,8 +39,7 @@ const memberData = [
 
     img: images.bhawesh,
     links: {
-      gmail:
-        "https://www.facebook.com/profile.php?id=100009458753340&mibextid=ZbWKwL",
+      gmail: "bhaweshkumar617@gmail.com",
       linkedin: "linkedInProfile",
       github: "Github(optional)",
     },
@@ -50,12 +48,12 @@ const memberData = [
   {
     name: "Rahul Pathak",
     stats: "Documentation and Presentation",
-    desc: "Rahul Pathak, student as a software engineer, FIEM, hobbies: Gaming, Learning",
+    desc:
+      "Rahul Pathak, student as a software engineer, FIEM, hobbies: Gaming, Learning",
 
     img: images.rahul,
     links: {
-      gmail:
-        "rp258911@gmail.com",
+      gmail: "rp258911@gmail.com",
       linkedin: "linkedInProfile",
       github: "Github(optional)",
     },
@@ -63,12 +61,12 @@ const memberData = [
   {
     name: "Bipul prasad",
     stats: "Entrepreneur and Management",
-    desc: "I'm Bipul prasad, self learner, problem solver, and  Entrepreneur , hobbies: Traveling",
+    desc:
+      "I'm Bipul prasad, self learner, problem solver, and  Entrepreneur , hobbies: Traveling",
 
     img: images.bipul,
     links: {
-      gmail:
-        "bipulprasad14.1.2003@gmail.com",
+      gmail: "bipulprasad14.1.2003@gmail.com",
       linkedin: "linkedInProfile",
       github: "Github(optional)",
     },
@@ -80,8 +78,7 @@ const memberData = [
 
     img: images.abhinandan,
     links: {
-      gmail:
-        "abhinandandas951@gmail.com",
+      gmail: "abhinandandas951@gmail.com",
       linkedin: "linkedInProfile",
       github: "Github(optional)",
     },
@@ -92,7 +89,7 @@ const About = () => {
   return (
     <>
       <Header />
-      <div className="px-5 py-8 max-w-screen-2xl rounded-lg shadow mx-auto my-7">
+      <div className="px-5 py-8 max-w-screen-2xl rounded-lg shadow mx-auto lg:my-7 my-0">
         <div className="mb-7">
           <h1 className="font-bold text-4xl text-slate-700 text-center lg:text-left">
             About us
@@ -110,7 +107,7 @@ const About = () => {
             fiem batch 2021 - 2024
           </p>
         </div>
-        <div className="p-8 bg-white rounded-xl shadow dark:bg-gray-800 w-full">
+        <div className="py-8 px-4 bg-white rounded-xl shadow dark:bg-gray-800 w-full">
           <div className="flex flex-col flex-wrap items-center justify-center md:flex-row md:justify-evenly">
             {memberData.map((member, index) => (
               <AboutCard

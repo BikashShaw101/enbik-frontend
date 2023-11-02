@@ -21,9 +21,9 @@ const Pricing = () => {
   return (
     <>
       <Header />
-      <div className="px-4 py-8 mb-8 h-full max-w-screen-xl mx-auto flex flex-col ">
+      <div className="px-4 py-8 mb-8 h-full max-w-screen-2xl shadow-lg lg:my-7 my-0 mx-auto flex flex-col rounded-lg ">
         <div className="mb-10 ">
-          <h1 className="text-4xl font-extrabold text-slate-800">Pricing</h1>
+          <h1 className="text-4xl font-bold text-slate-800 lg:text-left text-center">Pricing</h1>
           <hr />
         </div>
         <div className="flex flex-col md:flex-row md:gap-x-8 md:flex-wrap lg:flex-row items-center justify-center lg:gap-x-10 my-auto gap-y-10 lg:gap-y-0">

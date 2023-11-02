@@ -7,18 +7,18 @@ const AboutCard = ({ name, stats, desc, links, img }) => {
     setActive(true);
   };
   return (
-    <div className="p-4 my-5 lg:my-0">
+    <div className="p-4 my-5 lg:my-0 ">
       {active && (
         <>
           <div className="fixed top-0 left-0 min-w-screen lg:w-screen z-[60] min-h-screen overflow-hidden bg-slate-800 flex items-center justify-center p-10">
             <img
               src={img}
               alt="memberProfile"
-              className="xl:w-2/5 md:w-5/5 h-auto rounded-lg xl:hover:scale-110 transition-all duration-200"
+              className="xl:w-2/5 md:w-5/5 h-auto rounded-lg xl:hover:scale-110 transition-all duration-200 "
             />
           </div>
           <AiOutlineClose
-            className="text-white text-2xl font-bold z-[99] fixed right-4 top-4"
+            className="text-white text-2xl font-bold z-[99] fixed right-4 top-4 cursor-pointer"
             onClick={() => setActive(false)}
           />
         </>
@@ -28,7 +28,7 @@ const AboutCard = ({ name, stats, desc, links, img }) => {
           <img
             alt="profile"
             src={img}
-            className="mx-auto object-cover rounded-full h-40 w-40 "
+            className="mx-auto object-cover rounded-full h-40 w-40 cursor-pointer"
             onClick={handleMemberDescription}
           />
         </div>
@@ -44,7 +44,9 @@ const AboutCard = ({ name, stats, desc, links, img }) => {
       </div>
       <div className="flex items-center justify-evenly pt-8 mx-auto text-gray-500 border-t border-gray-200 w-44">
         <a
-          href={`https://mail.google.com/mail/u/1/?view=cm&fs=1&to=${links.gmail}.com&tf=1`}
+          href={`https://mail.google.com/mail/u/1/?view=cm&fs=1&to=${
+            links.gmail ? links.gmail : ""
+          }.com&tf=1`}
           className="cursor-pointer"
         >
           <svg

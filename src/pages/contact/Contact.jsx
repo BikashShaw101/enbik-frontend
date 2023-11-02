@@ -16,24 +16,23 @@ const Contact = () => {
   const onSubmit = (data) => {
     send("service_0ra03dk", "template_2mvjku6", data, "-9UuVz-6vmajnKntg")
       .then((response) => {
-        // console.log("SUCCESS!", response.status , response.text);
         formSuccess();
       })
       .catch((err) => {
-        // console.log("FAILED..! ", err );
+        console.log("FAILED..! ", err);
         toast.error("Something went wrong! Try Later");
       });
   };
 
   const formSuccess = () => {
-    toast("Thanks for submitting your Queries");
+    toast.success("Thanks for submitting your Queries");
     document.getElementById("queryForm").reset();
   };
 
   return (
     <>
       <Header />
-      <div className="px-5 py-8 max-w-screen-2xl rounded-lg shadow mx-auto my-5 ">
+      <div className="px-5 py-8 max-w-screen-2xl rounded-lg shadow mx-auto lg:my-7 my-0 ">
         <div className="mb-9">
           <h1 className="text-4xl font-bold text-slate-800 lg:text-left text-center">
             Contact Us
@@ -46,8 +45,16 @@ const Contact = () => {
               Feel free to contact us, for any query and questions related to
               this website and it's content
             </p>
-            <ContactCard title={"Reached"} numbers={"3K"} className={"w-2/5 bg-green-500"}  />
-            <ContactCard title={"Responses"} numbers={"1K"} className={"w-1/5 bg-green-300"} />
+            <ContactCard
+              title={"Reached"}
+              numbers={"3K"}
+              className={"w-2/5 bg-green-500"}
+            />
+            <ContactCard
+              title={"Responses"}
+              numbers={"1K"}
+              className={"w-1/5 bg-green-300"}
+            />
           </div>
           <div className=" bg-slate-800 mx-auto px-6 py-8 rounded-lg ">
             <form

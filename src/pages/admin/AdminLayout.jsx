@@ -30,7 +30,7 @@ const AdminLayout = () => {
   if (profileIsLoading) {
     return (
       <div className="w-full h-screen flex justify-center items-center gap-x-1 ">
-        <span className="loading loading-infinity loading-lg text-slate-800"></span>
+        <span className="loading loading-infinity loading-lg"></span>
         <h3 className="text-2xl text-slate-700 font-bold ">Loading..</h3>
       </div>
     );

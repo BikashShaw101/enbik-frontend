@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import ArticleCardSkeleton from "../../../components/ArticleCardSkeleton";
 import ErrorMessage from "../../../components/ErrorMessage";
 
-const Articles = () => {
+const Articles = ({hidden}) => {
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getAllPosts(),
     queryKey: ["posts"],
@@ -18,7 +18,7 @@ const Articles = () => {
   });
 
   return (
-    <section className="flex flex-col container mx-auto px-5 py-10">
+    <section className={`flex flex-col container mx-auto px-5 py-10`}>
       <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
         {isLoading ? (
           [...Array(3)].map((item, index) => (
@@ -35,6 +35,7 @@ const Articles = () => {
               key={post._id}
               post={post}
               className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+              imgClass="lg:h-48 xl:h-60"
             />
           ))
         )}
@@ -45,7 +46,7 @@ const Articles = () => {
           />
         ))} */}
       </div>
-      <button className="mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg">
+      <button className={`${hidden} mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg `}>
         <span>More Articles</span>
         <FaArrowRight className="w-3 h-3 " />
       </button>
