@@ -8,7 +8,7 @@ import CtaImage from "../assets/CtaImage.jpg";
 import base from "../assets/Base.svg";
 import user from "../assets/user.png";
 import saptarshi from "../assets/member/saptarshi.jpg";
-import bikash from "../assets/member/bikash.jpg";
+import bikash from "../assets/member/bikash.jpeg";
 import rahul from "../assets/member/rahul.jpeg";
 import bhawesh from "../assets/member/bhawesh.jpeg";
 import bipul from "../assets/member/bipul.jpeg";
