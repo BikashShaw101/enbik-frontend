@@ -68,9 +68,9 @@ const AboutCard = ({ name, stats, desc, links, img }) => {
             ></path>
             <path
               fill="#ggg"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M10.9091 23.4633V9.28152L24 19.0997L37.0909 9.28155V23.4633L24 33.2815L10.9091 23.4633Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
             <path
               fill="#ggg"

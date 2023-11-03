@@ -74,8 +74,8 @@ const NavItem = ({ item }) => {
 };
 
 const Header = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [navIsVisible, setNavIsVissible] = useState(false);
   const userState = useSelector((state) => state.user);
   const [profileDropdown, setProfileDropdown] = useState(false);
@@ -136,7 +136,7 @@ const Header = () => {
                     } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 w-max lg:transform lg:translate-y-full lg:group-hover:block`}
                   >
                     <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-                      {userState?.userInfo?.admin && (
+                      { userState.userInfo?.admin === "true" && (
                         <button
                           onClick={() => navigate("/admin")}
                           type="button"
@@ -167,7 +167,7 @@ const Header = () => {
           ) : (
             <button
               onClick={() => navigate("/login")}
-              className="border-2 mt-5 lg:mt-0 border-blue-500 px-6 py-2 rounded-full font-semibold text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
+              className="border-2 mt-5 lg:mt-0 border-orange-600 px-6 py-2 rounded-full font-semibold text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
             >
               Sign in
             </button>

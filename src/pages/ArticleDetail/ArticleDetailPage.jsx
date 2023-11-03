@@ -72,7 +72,7 @@ const ArticleDetailPage = () => {
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
               {data?.title}
             </h1>
-            <div className="w-full">
+            <div className="w-full overflow-x-auto">
               {!isLoading && !isError && (
                 <Editor content={data?.body} editable={false} />
               )}

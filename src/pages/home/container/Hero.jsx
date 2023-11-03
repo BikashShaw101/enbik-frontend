@@ -1,13 +1,17 @@
 import React from "react";
 import { images } from "../../../constants";
 import { FiSearch } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const Hero = () => {
+  const searchHandler = () => {
+    toast.error("Not Enabled in Beta Version");
+  };
   return (
     <section className="container mx-auto flex flex-col lg:flex-row px-5 py-5 ">
       <div className="mt-10 lg:w-1/2">
         <h1 className="font-roboto text-3xl text-center font-bold text-primary md:text-5xl lg:text-4xl xl:text-5xl lg:text-left lg:max-w-[540px] ">
-          Read the most Interesting articles Here
+          Read the most Interesting articles here
         </h1>
         <p className="text-dark-hard opacity-80 font-semibold mt-4 text-center md:text-xl xl:text-xl lg:text-base lg:text-left">
           Releated to the ancient wisdom, perspective with modern thoughts and
@@ -25,6 +29,7 @@ const Hero = () => {
           </div>
           <button
             type="button"
+            onClick={searchHandler}
             className="w-full bg-orange-500 text-white font-semibold rounded-lg px-5 py-3 md:absolute md:right-2 md:top-1/2 md:-translate-y-1/2 md:w-fit md:py-2"
           >
             Search
