@@ -33,8 +33,8 @@ const ArticleCard = ({ post, className, imgClass="" }) => {
           <div className="flex items-center gap-x-2 md:gap-x-2.5 ">
             <img
               src={
-                post?.user?.avatar
-                  ? stables.UPLOAD_FOLDER_BASE_URL + post?.user?.avatar
+                post.user?.avatar
+                  ? stables.UPLOAD_FOLDER_BASE_URL + post.user?.avatar
                   : images.user
               }
               alt="post profile"

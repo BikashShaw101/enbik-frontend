@@ -71,7 +71,10 @@ const ArticleDetailPage = () => {
               ))}
             </div>
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
-              {data?.title}
+              {!isLoading && !isError && (
+                <Editor content={data?.title} editable={false} />
+              )}
+              {/* {data?.title} */}
             </h1>
             <div className="w-full overflow-x-auto">
               {!isLoading && !isError && (

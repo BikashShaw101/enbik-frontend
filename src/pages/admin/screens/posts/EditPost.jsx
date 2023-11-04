@@ -20,6 +20,7 @@ const EditPost = () => {
   const [photo, setPhoto] = useState(null);
   const [initialPhoto, setInitialPhoto] = useState(null);
   const [body, setBody] = useState(null);
+  const [newTitle, setNewTitle] = useState("");
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getSinglePost({ slug }),
     queryKey: ["blog", slug],
@@ -70,7 +71,11 @@ const EditPost = () => {
       );
       updatedData.append("postPicture", picture);
     }
+    updatedData.append("title", `"${newTitle}"`);
     updatedData.append("document", JSON.stringify({ body }));
+    console.log(updatedData);
+    console.log(newTitle);
+
     mutateUpdatedPostDetail({
       updatedData,
       slug,
@@ -139,7 +144,15 @@ const EditPost = () => {
               ))}
             </div>
             <h1 className="text-xl md:text-[28px] font-medium font-roboto text-dark-hard mt-4">
-              {data?.title}
+              {!isLoading && !isError && (
+                <input
+                  type="text"
+                  placeholder="Title"
+                  className="w-full px-0 py-3 outline-none bg-transparent border-none "
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  value={newTitle ? newTitle : data?.title}
+                />
+              )}
             </h1>
             <div className="w-full h-auto mt-6 overflow-x-auto ">
               {!isLoading && !isError && (
