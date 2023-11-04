@@ -13,14 +13,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllPosts, getSinglePost } from "../../services/index/posts";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-// import parseJsonToHtml from "../../utils/parseJsonToHtml";
 import Editor from "../../components/editor/Editor";
 
 const ArticleDetailPage = () => {
   const { slug } = useParams();
   const userState = useSelector((state) => state.user);
   const [breadCrumbsData, setBreadCrumbsData] = useState([]);
-//   const [body, setBody] = useState(null);
+  //   const [body, setBody] = useState(null);
 
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getSinglePost({ slug }),
@@ -28,10 +27,10 @@ const ArticleDetailPage = () => {
     onSuccess: (data) => {
       setBreadCrumbsData([
         { name: "Home", link: "/" },
-        { name: "Blog", link: "/blog" },
+        { name: "Articles", link: "/articles" },
         { name: "Article title", link: `/blog/${data.slug}` },
       ]);
-    //   setBody(parseJsonToHtml(data?.body));
+      //   setBody(parseJsonToHtml(data?.body));
     },
   });
 
@@ -50,15 +49,17 @@ const ArticleDetailPage = () => {
         <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
           <article className="flex-1">
             <BreadCrumbs data={breadCrumbsData} />
+
             <img
               src={
                 data?.photo
-                  ? stables.UPLOAD_FOLDER_BASE_URL + data?.photo
+                  ? stables.UPLOAD_FOLDER_BASE_URL + data.photo
                   : images.image
               }
               alt={data?.title}
               className="rounded-xl w-full"
             />
+
             <div className="flex gap-2 mt-4">
               {data?.categories.map((category) => (
                 <Link

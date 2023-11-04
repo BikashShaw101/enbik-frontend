@@ -69,21 +69,23 @@ const ManagePost = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-orange-500">Manage Posts</h1>
+      <h1 className="text-2xl font-semibold text-orange-500 transition-all duration-200 text-center lg:text-left">
+        Manage Posts
+      </h1>
       <div className="w-full px-4 mx-auto ">
         <div className="py-8">
-          <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
-            <h2 className="text-2xl leading-tight">Posts</h2>
-            <div className="text-end">
+          <div className="flex md:flex-row flex-col flex-wrap xl:flex-nowrap justify-between items-center w-full mb-1 sm:mb-0">
+            <h2 className="text-2xl leading-tight mb-4 md:mb-0">Posts</h2>
+            <div className="lg:text-end text-center">
               <form
                 onSubmit={submitSearchKeywordHandler}
-                className="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0"
+                className="flex flex-col justify-center  md:max-w-sm w-full space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0"
               >
-                <div className=" relative ">
+                <div className="">
                   <input
                     type="text"
                     id="filter"
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                    className="z-[22] rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     placeholder="Post name.."
                     onChange={searchKeywordHandler}
                     value={searchKeyword}
@@ -105,32 +107,34 @@ const ManagePost = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-semibold text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-semibold text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                     >
                       Category
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className=" whitespace-nowrap px-5 py-3 text-sm font-semibold text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                     >
                       Created at
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                      className="px-5 py-3 text-sm font-semibold text-left text-gray-800 uppercase bg-white border-b border-gray-200"
                     >
                       Tags
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
-                    ></th>
+                      className="px-8 py-3 text-sm font-semibold text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+                    >
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -150,25 +154,23 @@ const ManagePost = () => {
                       </td>
                     </tr>
                   ) : (
-                    postsData?.data.map((post) => (
-                      <tr key={post.title}>
+                    postsData?.data.map((post, index) => (
+                      <tr key={index}>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                           <div className="flex items-center">
                             <div className="flex-shrink-0">
-                              <a href="/" className="relative block">
-                                <img
-                                  alt={post.title}
-                                  src={
-                                    post?.photo
-                                      ? stables.UPLOAD_FOLDER_BASE_URL +
-                                        post?.photo
-                                      : images.image
-                                  }
-                                  className="mx-auto object-cover rounded-sm aspect-square w-10 "
-                                />
-                              </a>
+                              <img
+                                alt={post.title}
+                                src={
+                                  post?.photo
+                                    ? stables.UPLOAD_FOLDER_BASE_URL +
+                                      post?.photo
+                                    : images.image
+                                }
+                                className="mx-auto object-cover rounded-sm aspect-square w-10 "
+                              />
                             </div>
-                            <div className="ml-3">
+                            <div className="ml-3 mr-5 min-w-[100px] overflow-x-auto">
                               <p className="text-gray-900 whitespace-no-wrap">
                                 {post.title}
                               </p>
@@ -195,7 +197,7 @@ const ManagePost = () => {
                           </p>
                         </td>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                          <div className="flex gap-x-2 ">
+                          <div className="flex gap-x-2 flex-nowrap whitespace-nowrap ">
                             {post?.tags.length > 0
                               ? post.tags.map((tag, index) => (
                                   <p key={index}>
@@ -206,7 +208,7 @@ const ManagePost = () => {
                               : "No tags"}
                           </div>
                         </td>
-                        <td className="px-5 py-5 text-sm bg-white border-b border-gray-200  space-x-7">
+                        <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 space-x-7 whitespace-nowrap ">
                           <Link
                             to={`/admin/posts/manage/edit/${post?.slug}`}
                             className="text-green-500 hover:text-green-900 font-semibold"

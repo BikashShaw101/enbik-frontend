@@ -8,7 +8,6 @@ import {
 } from "../../../../services/index/posts";
 import { Link, useParams } from "react-router-dom";
 import ErrorMessage from "../../../../components/ErrorMessage";
-// import parseJsonToHtml from "../../../../utils/parseJsonToHtml";
 import { stables } from "../../../../constants";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -111,7 +110,7 @@ const EditPost = () => {
                   />
                 </div>
               ) : (
-                <div className="flex items-center justify-center min-h-[200px] w-full bg-green-100/50 rounded-xl">
+                <div className="flex items-center justify-center min-h-[300px] w-full bg-green-100/50 rounded-xl">
                   <HiOutlineCamera className="w-7 h-auto text-center  text-green-500" />
                 </div>
               )}

@@ -12,8 +12,8 @@ const ArticleCard = ({ post, className, imgClass="" }) => {
       <Link to={`/blog/${post.slug}`}>
         <img
           src={
-            post.photo
-              ? stables.UPLOAD_FOLDER_BASE_URL + post.photo
+            post?.photo
+              ? stables.UPLOAD_FOLDER_BASE_URL + post?.photo
               : images.image
           }
           alt="post1"
@@ -33,8 +33,8 @@ const ArticleCard = ({ post, className, imgClass="" }) => {
           <div className="flex items-center gap-x-2 md:gap-x-2.5 ">
             <img
               src={
-                post.user.avatar
-                  ? stables.UPLOAD_FOLDER_BASE_URL + post.user.avatar
+                post?.user?.avatar
+                  ? stables.UPLOAD_FOLDER_BASE_URL + post?.user?.avatar
                   : images.user
               }
               alt="post profile"

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const NavItemCollapse = ({
-  content,
+  children,
   title,
   icon,
   name,
@@ -41,19 +40,7 @@ const NavItemCollapse = ({
       </div>
       <div className="d-collapse-content">
         <div className="flex flex-col gap-y-2 mt-2 ">
-          {content.map((item) => (
-            <Link
-              to={item.link}
-              key={item.title}
-              className={`font-semibold text-[#a5a5a5] ${
-                name === activeNavName
-                  ? "font-bold text-dark-hard"
-                  : "font-semibold text-[#a5a5a5]"
-              }`}
-            >
-              {item.title}
-            </Link>
-          ))}
+          {children}
         </div>
       </div>
     </div>

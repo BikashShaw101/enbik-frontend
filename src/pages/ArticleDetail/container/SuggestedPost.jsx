@@ -25,6 +25,7 @@ const SuggestedPost = ({ className, header, posts = [], tags }) => {
               alt={item.title}
               className="aspect-square object-cover rounded-lg w-1/5"
             />
+
             <div className="text-sm font-roboto text-dark-hard font-medium ">
               <h3 className="text-sm font-roboto text-dark-hard font-medium md:text-base lg:text-lg">
                 <Link to={`/blog/${item.slug}`}>{item.title}</Link>
