@@ -1,18 +1,49 @@
 import React from "react";
-import Articles from "../home/container/Articles";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ErrorMessage from "../../components/ErrorMessage";
+import ArticleCard from "../../components/ArticleCard";
+import toast from "react-hot-toast";
+import { getAllPosts } from "../../services/index/posts";
+import { useQuery } from "@tanstack/react-query";
+import ArticleCardSkeleton from "../../components/ArticleCardSkeleton";
 
 const NewArticles = () => {
+  const { data, isLoading, isError } = useQuery({
+    queryFn: () => getAllPosts(),
+    queryKey: ["posts"],
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
+  });
+
   return (
     <>
       <Header />
-      <div className="px-5 py-8 max-w-screen-2xl rounded-lg shadow mx-auto lg:my-7 my-0 ">
-        <h2 className="mb-6 text-3xl lg:text-left text-center font-bold leading-9 text-gray-900 border-b-2 border-gray-100">
-          Articles
-        </h2>
-        <Articles hidden={"hidden"} />
-      </div>
+      <section className={`flex flex-col container mx-auto px-5 py-10`}>
+        <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
+          {isLoading ? (
+            [...Array(3)].map((item, index) => (
+              <ArticleCardSkeleton
+                key={index}
+                className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+              />
+            ))
+          ) : isError ? (
+            <ErrorMessage message="Couldn't fetch the post data" />
+          ) : (
+            data?.data.map((post) => (
+              <ArticleCard
+                key={post._id}
+                post={post}
+                className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+                imgClass="lg:h-48 xl:h-60"
+              />
+            ))
+          )}
+        </div>
+      </section>
       <Footer />
     </>
   );

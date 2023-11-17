@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import ArticleCard from "../../../components/ArticleCard";
 import { useQuery } from "@tanstack/react-query";
-import { getAllPosts } from "../../../services/index/posts";
+import { getHomePost } from "../../../services/index/posts";
 import toast from "react-hot-toast";
 import ArticleCardSkeleton from "../../../components/ArticleCardSkeleton";
 import ErrorMessage from "../../../components/ErrorMessage";
 import { Link } from "react-router-dom";
 
-const Articles = ({hidden}) => {
+const Articles = ({ hidden }) => {
+  useEffect(() => {}, []);
   const { data, isLoading, isError } = useQuery({
-    queryFn: () => getAllPosts(),
+    queryFn: () => getHomePost(),
     queryKey: ["posts"],
     onError: (error) => {
       toast.error(error.message);
@@ -47,7 +48,10 @@ const Articles = ({hidden}) => {
           />
         ))} */}
       </div>
-      <Link to={"/articles"} className={`${hidden} mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg `}>
+      <Link
+        to={"/articles"}
+        className={`${hidden} mx-auto flex items-center gap-x-2 font-bold text-darkprimary border-2 border-darkprimary px-6 py-3 rounded-lg `}
+      >
         <span>More Articles</span>
         <FaArrowRight className="w-3 h-3 " />
       </Link>

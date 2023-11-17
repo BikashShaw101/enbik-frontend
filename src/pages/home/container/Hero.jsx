@@ -11,7 +11,7 @@ const Hero = () => {
     <section className="container mx-auto flex flex-col lg:flex-row px-5 py-5 ">
       <div className="mt-10 lg:w-1/2">
         <h1 className="font-roboto text-3xl text-center font-bold text-primary md:text-5xl lg:text-4xl xl:text-5xl lg:text-left lg:max-w-[540px] ">
-          Read the most Interesting articles here
+          Read the Timeless articles related to scriptures and pyschology
         </h1>
         <p className="text-dark-hard opacity-80 font-semibold mt-4 text-center md:text-xl xl:text-xl lg:text-base lg:text-left">
           Releated to the ancient wisdom, perspective with modern thoughts and

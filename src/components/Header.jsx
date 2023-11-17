@@ -37,7 +37,7 @@ const NavItem = ({ item }) => {
           <Link to={item.href} className="px-4 py-2">
             {item.name}
           </Link>
-          <span className="text-blue-500 absolute transition-all duration-500 font-bold right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
+          <span className="text-orange-500 absolute transition-all duration-500 font-bold right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
             /
           </span>
         </>
@@ -112,7 +112,7 @@ const Header = () => {
         <div
           className={` ${
             navIsVisible ? "right-0" : "-right-full"
-          } mt-[56px] lg:mt-0 bg-dark-hard lg:bg-transparent z-[49] flex flex-col lg:flex-row w-full lg:w-auto justify-center lg:justify-end fixed top-0 bottom-0 gap-x-9 lg:static items-center font-semibold transition-all duration-300`}
+          } mt-[56px] lg:mt-0 bg-dark-hard lg:bg-transparent z-[49] flex flex-col lg:flex-row w-full lg:w-auto justify-center lg:justify-end fixed top-0 bottom-0 gap-x-9 lg:static items-center font-semibold `}
         >
           <ul className="flex text-white lg:text-dark-soft items-center gap-y-5 flex-col lg:flex-row gap-x-2">
             {navItemInfo.map((item) => (
@@ -136,7 +136,7 @@ const Header = () => {
                     } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 w-max lg:transform lg:translate-y-full lg:group-hover:block`}
                   >
                     <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-                      { userState?.userInfo?.admin === "true" && (
+                      {userState?.userInfo?.admin === "true" && (
                         <button
                           onClick={() => navigate("/admin")}
                           type="button"

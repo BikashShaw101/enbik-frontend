@@ -27,7 +27,7 @@ const AdminLayout = () => {
     },
   });
 
-  if (profileIsLoading) {
+  if (profileIsLoading && !profileData) {
     return (
       <div className="w-full h-screen flex justify-center items-center gap-x-1 ">
         <span className="loading loading-infinity loading-lg"></span>

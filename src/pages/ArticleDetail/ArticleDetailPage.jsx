@@ -22,8 +22,8 @@ const ArticleDetailPage = () => {
   //   const [body, setBody] = useState(null);
 
   const { data, isLoading, isError } = useQuery({
-    queryFn: () => getSinglePost({ slug }),
     queryKey: ["blog", slug],
+    queryFn: () => getSinglePost({ slug }),
     onSuccess: (data) => {
       setBreadCrumbsData([
         { name: "Home", link: "/" },
@@ -35,8 +35,8 @@ const ArticleDetailPage = () => {
   });
 
   const { data: postData } = useQuery({
-    queryFn: () => getAllPosts(),
     queryKey: ["posts"],
+    queryFn: () => getAllPosts(),
   });
 
   return (
