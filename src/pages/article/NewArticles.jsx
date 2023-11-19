@@ -10,8 +10,8 @@ import ArticleCardSkeleton from "../../components/ArticleCardSkeleton";
 
 const NewArticles = () => {
   const { data, isLoading, isError } = useQuery({
-    queryFn: () => getAllPosts(),
     queryKey: ["posts"],
+    queryFn: () => getAllPosts(),
     onError: (error) => {
       toast.error(error.message);
       console.log(error);
