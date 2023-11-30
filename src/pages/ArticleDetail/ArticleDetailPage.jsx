@@ -66,7 +66,7 @@ const ArticleDetailPage = () => {
                   to="/blog?category=selectedCategory"
                   className="text-primary text-sm md:text-base font-roboto font-medium inline-block mt-4 uppercase"
                 >
-                  {category.name}
+                  {category}
                 </Link>
               ))}
             </div>

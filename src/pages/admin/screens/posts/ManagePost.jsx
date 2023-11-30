@@ -233,7 +233,7 @@ const ManagePost = () => {
                   )}
                 </tbody>
               </table>
-              {!isLoading && (
+              {!isLoading && !isFetching && (
                 <Pagination
                   onPageChange={(page) => setCurrentPage(page)}
                   currentPage={currentPage}
